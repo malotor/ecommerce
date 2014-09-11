@@ -1,0 +1,12 @@
+{
+    "name": "malotor/ecommerce",
+    "description": "A example of a ecommerce shop",
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "malotor\\ecommerce\\": "src"
+        }
+    }
+}
