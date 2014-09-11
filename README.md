@@ -14,7 +14,7 @@ User can add products to their chart
   New card has 0 products
   Whem a product is added the number os products in cart increased
 
-User can be more than one item from the same product
+User can add more than one item from the same product
 User can see total amount from products in his cart
 
 Administrator can assign a tax percentage to products
