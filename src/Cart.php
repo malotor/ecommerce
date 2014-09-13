@@ -4,13 +4,21 @@ namespace malotor\ecommerce;
 
 class Cart {
 
-  protected $products = array();
+  protected $cartLines = array();
 
   function countProducts() {
-    return count($this->products);
+
+    $numberOfProduct = 0;
+
+    foreach ($this->cartLines as $cartLine)
+      $numberOfProduct += $cartLine->getAmount();
+
+    return $numberOfProduct;
   }
 
-  function addProduct($product) {
-    $this->products[] = $product;
+  function addProduct($product, $amount = 1) {
+
+    $this->cartLines[] = new CartLine($product, $amount);
+
   }
 }
