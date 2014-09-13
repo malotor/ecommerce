@@ -8,7 +8,7 @@ http://culttt.com/2014/05/07/create-psr-4-php-package/
 To do:
 
 Product have fields name, description , ref , price, image
-
+  Price must be a numeric value
 
 User can add products to their chart
   New card has 0 products

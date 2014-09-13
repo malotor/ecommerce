@@ -1,9 +1,9 @@
 <?php
 
 use malotor\ecommerce\Product;
-use malotor\ecommerce\Cart;
 
-class ECommerceTest extends PHPUnit_Framework_TestCase {
+
+class ProductTest extends PHPUnit_Framework_TestCase {
 
   public function setUp() {
     $this->myProduct = new Product();
@@ -32,27 +32,6 @@ class ECommerceTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($this->productPrice , $this->myProduct->getPrice());
     $this->assertEquals($this->productImage , $this->myProduct->getImage());
 
-
   }
 
-  //New card has 0 products
-  public function testNewCart() {
-
-    $myCart = new Cart();
-
-    $this->assertEquals(0 , $myCart->countProducts());
-  }
-
-  //User can add products to their chart
-  //Whem a product is added the number os products in cart increased
-  public function testAddProductToCart() {
-
-    $myCart = new Cart();
-
-    $myCart->addProduct($this->myProduct);
-
-    $this->assertEquals(1 , $myCart->countProducts());
-  }
-
-  
 }
