@@ -34,4 +34,15 @@ class ProductTest extends PHPUnit_Framework_TestCase {
 
   }
 
+  /**
+   * @expectedException ProductPriceException
+   */
+
+  public function testProductPriceMustBeNumeric() {
+
+    $oneProduct = new Product();
+    $oneProduct->setPrice("ten");
+
+  }
+
 }

@@ -7,7 +7,7 @@ http://culttt.com/2014/05/07/create-psr-4-php-package/
 
 To do:
 
-Product have fields name, description , ref , price, image
+x Product have fields name, description , ref , price, image
   Price must be a numeric value
 
 User can add products to their chart
@@ -15,6 +15,9 @@ User can add products to their chart
   Whem a product is added the number os products in cart increased
 
 User can add more than one item from the same product
+
+User can remove a product from the cart by its reference
+
 User can see total amount from products in his cart
 
 Administrator can assign a tax percentage to products

@@ -16,29 +16,28 @@ class CartTest extends PHPUnit_Framework_TestCase {
     $this->product2 = $this->getMockBuilder('Product')
       ->disableOriginalConstructor()
       ->getMock();
-    $this->product1->expects($this->any())->method('getPrice')->will($this->returnValue(12.3));
-    $this->product1->expects($this->any())->method('getName')->will($this->returnValue('My second product'));
+    $this->product2->expects($this->any())->method('getPrice')->will($this->returnValue(12.3));
+    $this->product2->expects($this->any())->method('getName')->will($this->returnValue('My second product'));
 
 
   }
 
   //New card has 0 products
-  public function testNewCart() {
-
-    $myCart = new Cart();
-    $this->assertEquals(0 , $myCart->countProducts());
-  }
-
   //User can add products to their chart
   //Whem a product is added the number os products in cart increased
   public function testAddProductToCart() {
 
     $myCart = new Cart();
+    $this->assertEquals(0 , $myCart->countProducts());
 
-    $myCart->addProduct($this->myProduct);
+    $myCart->addProduct($this->product1);
 
     $this->assertEquals(1 , $myCart->countProducts());
+
+    $myCart->addProduct($this->product2);
+
+    $this->assertEquals(2 , $myCart->countProducts());
   }
 
-  
+
 }
