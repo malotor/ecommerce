@@ -35,7 +35,7 @@ class ProductTest extends PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @expectedException ProductPriceException
+   * @expectedException malotor\ecommerce\ProductPriceException
    */
 
   public function testProductPriceMustBeNumeric() {

@@ -44,6 +44,7 @@ class Product {
    * @param mixed $price
    */
   public function setPrice($price) {
+    if (!is_numeric($price)) throw new ProductPriceException();
     $this->price = $price;
     return $this;
   }
@@ -85,4 +86,13 @@ class Product {
     return $this->reference;
   }
 
+}
+
+
+class ProductPriceException extends \Exception {
+  public function __construct($message = null, $code = 0, Exception $previous = null)
+  {
+    $message = 'Product price must be numeric';
+    parent::__construct($message, $code, $previous);
+  }
 }
