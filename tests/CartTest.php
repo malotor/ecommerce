@@ -40,4 +40,15 @@ class CartTest extends PHPUnit_Framework_TestCase {
   }
 
 
+
+  public function testAddMoreThenOneItemFromAProduct() {
+
+    $myCart = new Cart();
+
+    $myCart->addProduct($this->product1, 2);
+
+    $this->assertEquals(2 , $myCart->countProducts());
+
+  }
+
 }
