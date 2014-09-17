@@ -16,9 +16,9 @@ class Cart {
     return $numberOfProduct;
   }
 
-  function addProduct($product, $amount = 1) {
+  function addProduct($cartLine) {
 
-    $this->cartLines[] = new CartLine($product, $amount);
+    $this->cartLines[] = $cartLine;
 
   }
 }

@@ -21,9 +21,7 @@ class CartLine {
     return $this->product;
   }
 
-
-
-  function __construct($product, $amount) {
+  function __construct($product, $amount = 1) {
     $this->product = $product;
     $this->amount = $amount;
   }

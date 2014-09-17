@@ -2,6 +2,7 @@
 
 use malotor\ecommerce\Product;
 use malotor\ecommerce\Cart;
+use malotor\ecommerce\CartLine;
 
 class CartTest extends PHPUnit_Framework_TestCase {
 
@@ -12,13 +13,14 @@ class CartTest extends PHPUnit_Framework_TestCase {
       ->getMock();
     $this->product1->expects($this->any())->method('getPrice')->will($this->returnValue(40));
     $this->product1->expects($this->any())->method('getName')->will($this->returnValue('My product'));
+    $this->product1->expects($this->any())->method('getReference')->will($this->returnValue('product'));
 
     $this->product2 = $this->getMockBuilder('Product')
       ->disableOriginalConstructor()
       ->getMock();
     $this->product2->expects($this->any())->method('getPrice')->will($this->returnValue(12.3));
     $this->product2->expects($this->any())->method('getName')->will($this->returnValue('My second product'));
-
+    $this->product2->expects($this->any())->method('getReference')->will($this->returnValue('product2'));
 
   }
 
@@ -30,11 +32,11 @@ class CartTest extends PHPUnit_Framework_TestCase {
     $myCart = new Cart();
     $this->assertEquals(0 , $myCart->countProducts());
 
-    $myCart->addProduct($this->product1);
+    $myCart->addProduct(new CartLine($this->product1));
 
     $this->assertEquals(1 , $myCart->countProducts());
 
-    $myCart->addProduct($this->product2);
+    $myCart->addProduct(new CartLine($this->product2));
 
     $this->assertEquals(2 , $myCart->countProducts());
   }
@@ -45,9 +47,16 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
     $myCart = new Cart();
 
-    $myCart->addProduct($this->product1, 2);
+    $cartLine = new CartLine($this->product1, 2);
+
+    $myCart->addProduct($cartLine);
 
     $this->assertEquals(2 , $myCart->countProducts());
+
+  }
+
+  public function testRemoveAProductsByItsReference() {
+
 
   }
 
