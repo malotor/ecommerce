@@ -27,7 +27,7 @@ use malotor\ecommerce\CartItem;
       $myCart = new Cart();
       $this->assertEquals(0 , $myCart->countProducts());
 
-      $myCart->addItem(new CartItem($this->product1));
+      $myCart->addItem(CartItem::create($this->product1));
 
       $this->assertEquals(1 , $myCart->countProducts());
 

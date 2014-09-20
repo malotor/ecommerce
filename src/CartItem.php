@@ -36,4 +36,8 @@ class CartItem {
     return $this->product->getPrice();
   }
 
+  public static function create($product, $amount = 1) {
+    return new static($product, $amount);
+  }
+
 }

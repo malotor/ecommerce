@@ -18,7 +18,7 @@ x User can add more than one item from the same product
 
 x User can remove a product from the cart by its reference
 
-User can see total cost from products in his cart
+x User can see total cost from products in his cart
 
 Administrator can assign a tax percentage to products
 
