@@ -2,7 +2,7 @@
 
 use malotor\ecommerce\Product;
 use malotor\ecommerce\Cart;
-use malotor\ecommerce\CartLine;
+use malotor\ecommerce\CartItem;
 
   class CartTest extends PHPUnit_Framework_TestCase {
 
@@ -22,16 +22,16 @@ use malotor\ecommerce\CartLine;
     //New card has 0 products
     //User can add products to their chart
     //Whem a product is added the number os products in cart increased
-    public function testAddProductToCart() {
+    public function testaddItemToCart() {
 
       $myCart = new Cart();
       $this->assertEquals(0 , $myCart->countProducts());
 
-      $myCart->addProduct(new CartLine($this->product1));
+      $myCart->addItem(new CartItem($this->product1));
 
       $this->assertEquals(1 , $myCart->countProducts());
 
-      $myCart->addProduct(new CartLine($this->product2));
+      $myCart->addItem(new CartItem($this->product2));
 
       $this->assertEquals(2 , $myCart->countProducts());
     }
@@ -42,9 +42,9 @@ use malotor\ecommerce\CartLine;
 
       $myCart = new Cart();
 
-      $cartLine = new CartLine($this->product1, 2);
+      $cartLine = new CartItem($this->product1, 2);
 
-      $myCart->addProduct($cartLine);
+      $myCart->addItem($cartLine);
 
       $this->assertEquals(1 , $myCart->countProducts());
 
@@ -53,7 +53,7 @@ use malotor\ecommerce\CartLine;
     public function testRemoveAProductsByItsReference() {
       $myCart = new Cart();
 
-      $myCart->addProduct(new CartLine($this->product1));
+      $myCart->addItem(new CartItem($this->product1));
 
       $myCart->removeProduct('PR1');
 
@@ -66,11 +66,11 @@ use malotor\ecommerce\CartLine;
 
       $myCart = new Cart();
 
-      $myCart->addProduct(new CartLine($this->product1));
+      $myCart->addItem(new CartItem($this->product1));
 
       $this->assertEquals(20.3 , $myCart->totalAmount());
 
-      $myCart->addProduct(new CartLine($this->product2));
+      $myCart->addItem(new CartItem($this->product2));
 
       $this->assertEquals(30.3 , $myCart->totalAmount());
 
@@ -82,7 +82,7 @@ use malotor\ecommerce\CartLine;
 
       $myCart = new Cart();
 
-      $myCart->addProduct(new CartLine($this->product1, 2));
+      $myCart->addItem(new CartItem($this->product1, 2));
 
       $this->assertEquals(40.6 , $myCart->totalAmount());
 

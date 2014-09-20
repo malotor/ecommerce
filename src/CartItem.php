@@ -2,7 +2,7 @@
 
 namespace malotor\ecommerce;
 
-class CartLine {
+class CartItem {
 
   protected $amount;
   protected $product;
@@ -33,7 +33,7 @@ class CartLine {
   }
 
   public function getProductPrice() {
-    return $this->product->getReference();
+    return $this->product->getPrice();
   }
 
 }

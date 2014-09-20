@@ -14,7 +14,7 @@ class Cart  {
     return count($this->lineCarts);
   }
 
-  public function addProduct($cartLine) {
+  public function addItem($cartLine) {
     $this->lineCarts[ $cartLine->getProductReference() ]=$cartLine;
   }
 
@@ -25,7 +25,6 @@ class Cart  {
   public function totalAmount() {
     $result = 0;
     foreach ($this->lineCarts as $lineCart) {
-      $productPrice = $lineCart->getProductPrice();
       $result += $lineCart->getAmount() * $lineCart->getProductPrice();
     }
     return $result;
