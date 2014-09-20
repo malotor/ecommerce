@@ -28,13 +28,18 @@ class CartItem {
 
 
   public function getProductReference() {
-
     return $this->product->getReference();
   }
 
   public function getProductPrice() {
     return $this->product->getPrice();
   }
+
+
+  public function lineCartAmount() {
+    return $this->getAmount() * $this->getProductPrice();
+  }
+
 
   public static function create($product, $amount = 1) {
     return new static($product, $amount);

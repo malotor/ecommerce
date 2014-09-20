@@ -22,14 +22,12 @@ class Cart  {
     unset($this->lineCarts[$productReference]);
   }
 
-  public function lineCartAmount($lineCart) {
-    return $lineCart->getAmount() * $lineCart->getProductPrice();
-  }
+
 
   public function totalAmount() {
     $result = 0;
     foreach ($this->lineCarts as $lineCart) {
-      $result += $this->lineCartAmount($lineCart);
+      $result += $lineCart->lineCartAmount();
     }
     return $result;
   }
