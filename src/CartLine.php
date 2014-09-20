@@ -25,4 +25,15 @@ class CartLine {
     $this->product = $product;
     $this->amount = $amount;
   }
+
+
+  public function getProductReference() {
+
+    return $this->product->getReference();
+  }
+
+  public function getProductPrice() {
+    return $this->product->getReference();
+  }
+
 }

@@ -16,13 +16,16 @@ x  Whem a product is added the number os products in cart increased
 
 x User can add more than one item from the same product
 
-User can remove a product from the cart by its reference
+x User can remove a product from the cart by its reference
 
-User can see total amount from products in his cart
+User can see total cost from products in his cart
 
 Administrator can assign a tax percentage to products
 
+what happens if i add 2 times the same product
 
-La referencia debe ser dos letras y dos digitos
+"La referencia debe ser dos letras y dos digitos"
 
+Remove all products from the cart
 
+Add a product that exist in the cart
