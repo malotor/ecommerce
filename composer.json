@@ -1,5 +1,6 @@
 {
     "name": "malotor/ecommerce",
+    "version" : "0.0.1-dev",
     "description": "A Ecommerce Business Login",
     "authors": [
       {
