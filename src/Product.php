@@ -2,7 +2,7 @@
 
 namespace malotor\ecommerce;
 
-class Product {
+class Product implements CartLineItemInterface {
 
   protected $name;
   protected $description;

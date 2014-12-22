@@ -20,12 +20,12 @@ x User can remove a product from the cart by its reference
 
 x User can see total cost from products in his cart
 
+x what happens if i add 2 times the same product
+
 Administrator can assign a tax percentage to products
 
-what happens if i add 2 times the same product
+
 
 "La referencia debe ser dos letras y dos digitos"
 
 Remove all products from the cart
-
-Add a product that exist in the cart

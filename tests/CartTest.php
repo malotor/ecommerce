@@ -1,91 +1,128 @@
 <?php
 
-use malotor\ecommerce\Product;
 use malotor\ecommerce\Cart;
-use malotor\ecommerce\CartItem;
-
-  class CartTest extends PHPUnit_Framework_TestCase {
-
-    public function setUp() {
-      $this->product1 = new Product();
-      $this->product1->setName("Product 1")
-        ->setReference("PR1")
-        ->setPrice(20.3);
-
-      $this->product2 = new Product();
-      $this->product2->setName("Product 2")
-        ->setReference("PR2")
-        ->setPrice(10);
-
-    }
-
-    //New card has 0 products
-    //User can add products to their chart
-    //Whem a product is added the number os products in cart increased
-    public function testaddItemToCart() {
-
-      $myCart = new Cart();
-      $this->assertEquals(0 , $myCart->countProducts());
-
-      $myCart->addItem(new CartItem($this->product1));
-
-      $this->assertEquals(1 , $myCart->countProducts());
-
-      $myCart->addItem(new CartItem($this->product2));
-
-      $this->assertEquals(2 , $myCart->countProducts());
-    }
+use malotor\ecommerce\CartLine;
 
 
+/**
+ * @ingroup Ecommerce
+ * @group Ecommerce
+ */
 
-    public function testAddMoreThenOneItemFromAProduct() {
+class CartTest extends PHPUnit_Framework_TestCase {
 
-      $myCart = new Cart();
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Ecommerce Unit Test',
+      'description' => 'Ecommerce Unit Test',
+      'group' => 'Ecommerce',
+    );
+  }
 
-      $cartLine = new CartItem($this->product1, 2);
+  public function setUp() {
 
-      $myCart->addItem($cartLine);
+    $this->product1 = $this->getMockBuilder('malotor\ecommerce\CartLineItemInterface')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $this->product1->method('getReference')
+      ->willReturn('PR1');
+    $this->product1->method('getPrice')
+      ->willReturn(20.3);
 
-      $this->assertEquals(1 , $myCart->countProducts());
+    $this->product2 = $this->getMockBuilder('malotor\ecommerce\CartLineItemInterface')
+      ->disableOriginalConstructor()
+      ->getMock();
+    $this->product2->method('getReference')
+      ->willReturn('PR2');
+    $this->product2->method('getPrice')
+      ->willReturn(11);
 
-    }
+    $this->myCart = new Cart();
+  }
 
-    public function testRemoveAProductsByItsReference() {
-      $myCart = new Cart();
+  //New card has 0 products
+  //User can add products to their chart
+  //Whem a product is added the number os products in cart increased
+  public function testaddItemToCart() {
 
-      $myCart->addItem(new CartItem($this->product1));
+    
+    $this->assertEquals(0 , $this->myCart->countProducts());
 
-      $myCart->removeProduct('PR1');
+    $this->myCart->addItem(CartLine::create($this->product1));
 
-      $this->assertEquals(0 , $myCart->countProducts());
+    $this->assertEquals(1 , $this->myCart->countProducts());
 
-    }
+    $this->myCart->addItem(CartLine::create($this->product2));
 
-    public function testTotalCostFromCartLines() {
-
-
-      $myCart = new Cart();
-
-      $myCart->addItem(new CartItem($this->product1));
-
-      $this->assertEquals(20.3 , $myCart->totalAmount());
-
-      $myCart->addItem(new CartItem($this->product2));
-
-      $this->assertEquals(30.3 , $myCart->totalAmount());
-
-    }
+    $this->assertEquals(2 , $this->myCart->countProducts());
+  }
 
 
-    public function testTotalCostFromProductsWithMultipleAmount() {
+
+  public function testAddMoreThenOneItemFromAProduct() {
+
+    $cartLine = CartLine::create($this->product1, 2);
+
+    $this->myCart->addItem($cartLine);
+
+    $this->assertEquals(1 , $this->myCart->countProducts());
+
+  }
+
+  public function testRemoveAProductsByItsReference() {
+
+    $this->myCart->addItem(CartLine::create($this->product1));
+
+    $this->myCart->removeProduct('PR1');
+
+    $this->assertEquals(0 , $this->myCart->countProducts());
+
+  }
 
 
-      $myCart = new Cart();
+  public function testTotalCostFromCartLines() {
 
-      $myCart->addItem(new CartItem($this->product1, 2));
+    $this->myCart->addItem(CartLine::create($this->product1));
 
-      $this->assertEquals(40.6 , $myCart->totalAmount());
+    $this->assertEquals(20.3 , $this->myCart->totalAmount());
 
-    }
+    $this->myCart->addItem(CartLine::create($this->product2));
+
+    $this->assertEquals(31.3 , $this->myCart->totalAmount());
+
+  }
+
+
+  public function testTotalCostFromProductsWithMultipleAmount() {
+
+    $this->myCart->addItem(CartLine::create($this->product1, 2));
+
+    $this->assertEquals(40.6 , $this->myCart->totalAmount());
+
+  }
+
+  public function testAddSeveralTimesTheSameProduct() {
+
+    $this->myCart->addItem(CartLine::create($this->product1, 2));
+    $this->myCart->addItem(CartLine::create($this->product1, 1));
+
+    $this->assertEquals(1 , $this->myCart->countProducts());
+
+    $this->assertEquals(60.9 , $this->myCart->totalAmount());
+
+  }
+
+  public function testGetCartItem() {
+
+
+    $product = $this->myCart->getCartItem(0);
+
+    $this->assertEquals(null , $product);
+
+  }
+
 
 }
