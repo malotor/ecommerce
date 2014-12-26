@@ -20,10 +20,7 @@ class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
   }
 
   public function setUp() {
-
-    //parent::initContainer();
-
-    $this->productMockup = $this->getMockBuilder('malotor\ecommerce\ProductInterface')
+    $this->productMockup = $this->getMockBuilder('malotor\ecommerce\CartLineItemInterface')
       ->disableOriginalConstructor()
       ->getMock();
     $this->productMockup->method('getReference')
@@ -32,55 +29,67 @@ class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
       ->willReturn(20.3);
 
     //ProductDAO MockUP
-    $this->productDAOMockup = $this->getMockBuilder('malotor\ecommerce\ProductDAO')
+
+    $this->productDAOMockup = $this->getMockBuilder('malotor\ecommerce\ProductDAOInterface')
       ->getMock();
     $this->productDAOMockup->method('get')
       ->willReturn($this->productMockup);
     $this->productDAOMockup->method('save')
-      ->willReturn(true);
+      ->willReturn($this->productMockup);
 
-
-    //var_dump($this->productDAOMockup);
-    //CartDAO MockUP
-    $cartMockup = $this->getMock('malotor\ecommerce\CartInterface');
+    $this->cartMockup = $this->getMock('malotor\ecommerce\Cart');
 
     $this->cartDAOMockup = $this->getMock('malotor\ecommerce\CartDAOInterface');
     $this->cartDAOMockup->method('get')
-      ->willReturn($cartMockup);
+      ->willReturn($this->cartMockup);
 
 
-    //$this->ecommerceManager = new EcommerceManager($this->productDAOMockup, $this->cartDAOMockup);
+    $this->ecommerceManager = new EcommerceManager($this->productDAOMockup, $this->cartDAOMockup);
 
-    //parent::setContainer();
   }
 
   public function testCreateNewEcommerceManager() {
-    //@todo this test fails
-    $this->markTestIncomplete(
-      'This test has not been implemented yet.'
-    );
+
     $this->assertInstanceOf('malotor\ecommerce\EcommerceManager', $this->ecommerceManager);
   }
 
   public function testAddProductToCart() {
 
-    //@todo this test fails
-    $this->markTestIncomplete(
-      'This test has not been implemented yet.'
-    );
-
     $productID = 1;
-    /*
+
     $this->productDAOMockup->expects($this->once())
       ->method('get')
       ->with($this->equalTo($productID));
 
     $this->cartMockup->expects($this->once())
-      ->method('addItem')
-      ->with($this->equalTo($this->productMockup));
-    */
+      ->method('addItem');
 
-    $this->ecommerceManager->addProductToCart($productID);
+
+    $this->ecommerceManager->addProductToCart($productID, 1);
+
+  }
+
+  public function testGetTheProductFromDAO() {
+
+    $productID = 1;
+
+    $this->productDAOMockup->expects($this->once())
+      ->method('get')
+      ->with($this->equalTo($productID));
+
+    $this->ecommerceManager->addProductToCart($productID, 1);
+
+  }
+
+  public function testAddItemToCart() {
+
+    $productID = 1;
+
+    $this->productDAOMockup->expects($this->once())
+      ->method('get')
+      ->with($this->equalTo($productID));
+
+    $this->ecommerceManager->addProductToCart($productID, 1);
 
   }
 

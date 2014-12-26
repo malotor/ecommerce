@@ -19,10 +19,10 @@ class EcommerceManager  {
     $this->cartDAO = $cartDAO;
   }
 
-  public function addProductToCart($productId) {
+  public function addProductToCart($productId, $quantity) {
     $product = $this->productDAO->get($productId);
     $shoppingCart = $this->cartDAO->get();
-    $shoppingCart->addItem(CartLine::create($product,1));
+    $shoppingCart->addItem(CartLine::create($product, $quantity));
     $this->cartDAO->save($shoppingCart);
   }
 
