@@ -30,12 +30,16 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
     $cartLine[1]->method('lineCartAmount')
       ->willReturn(10.3);
 
+    $map = array(
+      array(0, $cartLine[0]),
+      array(1, $cartLine[1])
+    );
 
     $this->cart = $this->getMockBuilder('malotor\ecommerce\CartInterface')
       ->disableOriginalConstructor()
       ->getMock();
     $this->cart->method('getCartItem')
-      ->will($this->onConsecutiveCalls($cartLine[0], $cartLine[1]));
+      ->will($this->returnValueMap($map));
 
     $this->cart->method('countItems')
       ->willReturn(2);
@@ -87,31 +91,19 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
     $keys[1] = "PR2";
 
     $cartIterator = new CartIterator(new Cart);
-
     foreach($cartIterator as $key => $cartLine) {
       $this->fail("New Carts must be empty");
-      //$this->assertEquals($keys[$key], $cartLine->getProductReference());
     }
-
-
   }
 
   public function testForeach() {
 
-    //@todo this test fails
-    $this->markTestIncomplete(
-      'This test has not been implemented yet.'
-    );
     $keys[0] = "PR1";
     $keys[1] = "PR2";
 
     foreach($this->cartIterator as $key => $cartLine) {
-      var_dump($key);
-      var_dump($cartLine->getProductReference());
       $this->assertEquals($keys[$key], $cartLine->getItemReference());
     }
-
-
   }
 
 

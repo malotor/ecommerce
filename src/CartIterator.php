@@ -32,6 +32,6 @@ class CartIterator implements \Iterator {
   }
 
   public function valid() {
-    return $this->cart->getCartItem ($this->position);
+    return !is_null( $this->cart->getCartItem ($this->position));
   }
 } 

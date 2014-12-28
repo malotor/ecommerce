@@ -60,7 +60,8 @@ class Cart implements CartInterface {
   public function getCartItem($index) {
     if (isset($this->lineCarts[$index]))
       return $this->lineCarts[$index];
-    else return null;
+    //@todo don´t return null
+    return null;
   }
 
   public function getIterator() {
