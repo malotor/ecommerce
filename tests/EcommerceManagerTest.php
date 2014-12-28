@@ -12,11 +12,11 @@ class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
    * {@inheritdoc}
    */
   public static function getInfo() {
-    return array(
-      'name' => 'Ecommerce Unit Test',
+    return [
+      'name'        => 'Ecommerce Unit Test',
       'description' => 'Ecommerce Unit Test',
-      'group' => 'Ecommerce',
-    );
+      'group'       => 'Ecommerce',
+    ];
   }
 
   public function setUp() {

@@ -23,13 +23,12 @@ class ProductTest extends PHPUnit_Framework_TestCase {
 
   }
 
-  public function testProductGetters()
-  {
-    $this->assertEquals($this->productName , $this->myProduct->getName());
+  public function testProductGetters() {
+    $this->assertEquals($this->productName, $this->myProduct->getName());
     $this->assertEquals($this->productDesc, $this->myProduct->getDescription());
-    $this->assertEquals($this->productRef , $this->myProduct->getReference());
-    $this->assertEquals($this->productPrice , $this->myProduct->getPrice());
-    $this->assertEquals($this->productImage , $this->myProduct->getImage());
+    $this->assertEquals($this->productRef, $this->myProduct->getReference());
+    $this->assertEquals($this->productPrice, $this->myProduct->getPrice());
+    $this->assertEquals($this->productImage, $this->myProduct->getImage());
   }
 
   public function testProductsImplementsCartItemInterface() {

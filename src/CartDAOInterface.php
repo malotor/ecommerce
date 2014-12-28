@@ -10,5 +10,6 @@ namespace malotor\ecommerce;
 
 interface CartDAOInterface {
   function get();
+
   function save($cart);
 } 

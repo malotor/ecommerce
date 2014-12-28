@@ -1,27 +1,10 @@
 <?php
 
-
 use malotor\ecommerce\Order;
 
 use malotor\ecommerce\CartLine;
 
-/**
- * @ingroup Ecommerce
- * @group Ecommerce
- */
-
 class OrderTest extends PHPUnit_Framework_TestCase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function getInfo() {
-    return array(
-      'name' => 'Ecommerce Unit Test',
-      'description' => 'Ecommerce Unit Test',
-      'group' => 'Ecommerce',
-    );
-  }
 
   public function setUp() {
 
@@ -49,15 +32,15 @@ class OrderTest extends PHPUnit_Framework_TestCase {
 
   public function testaddItemToOrder() {
 
-    $this->assertEquals(0 , $this->order->countItems());
+    $this->assertEquals(0, $this->order->countItems());
 
     $this->order->addItem(CartLine::create($this->product1));
 
-    $this->assertEquals(1 , $this->order->countItems());
+    $this->assertEquals(1, $this->order->countItems());
 
     $this->order->addItem(CartLine::create($this->product2));
 
-    $this->assertEquals(2 , $this->order->countItems());
+    $this->assertEquals(2, $this->order->countItems());
 
   }
 
@@ -66,7 +49,7 @@ class OrderTest extends PHPUnit_Framework_TestCase {
 
     $this->order->addItem(CartLine::create($this->product1, 2));
 
-    $this->assertEquals(1 , $this->order->countItems());
+    $this->assertEquals(1, $this->order->countItems());
 
   }
 
@@ -76,16 +59,16 @@ class OrderTest extends PHPUnit_Framework_TestCase {
 
     $this->order->addItem(CartLine::create($this->product1));
 
-    $this->assertEquals(20.3 , $this->order->totalAmount());
+    $this->assertEquals(20.3, $this->order->totalAmount());
 
     $this->order->addItem(CartLine::create($this->product2));
 
-    $this->assertEquals(31.3 , $this->order->totalAmount());
+    $this->assertEquals(31.3, $this->order->totalAmount());
 
   }
 
   public function testOrderCreationDate() {
-    $this->assertEquals($this->now ,$this->order->getCreationDate());
+    $this->assertEquals($this->now, $this->order->getCreationDate());
   }
 
 }

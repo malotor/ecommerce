@@ -47,7 +47,7 @@ class CartLine implements CartLineInterface {
   }
 
   public function lineCartAmount() {
-    return $this->getQuantity() *  $this->getItem()->getPrice();
+    return $this->getQuantity() * $this->getItem()->getPrice();
   }
 
   /**
@@ -56,6 +56,7 @@ class CartLine implements CartLineInterface {
   public function increaseAmount($increment = 1) {
     $this->increaseQuantity($increment);
   }
+
   public function increaseQuantity($increment = 1) {
     $this->quantity += $increment;
   }

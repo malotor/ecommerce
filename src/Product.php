@@ -15,6 +15,7 @@ class Product implements CartLineItemInterface {
    */
   public function setDescription($description) {
     $this->description = $description;
+
     return $this;
   }
 
@@ -30,6 +31,7 @@ class Product implements CartLineItemInterface {
    */
   public function setImage($image) {
     $this->image = $image;
+
     return $this;
   }
 
@@ -44,8 +46,10 @@ class Product implements CartLineItemInterface {
    * @param mixed $price
    */
   public function setPrice($price) {
-    if (!is_numeric($price)) throw new ProductPriceException();
+    if (!is_numeric($price))
+      throw new ProductPriceException();
     $this->price = $price;
+
     return $this;
   }
 
@@ -61,6 +65,7 @@ class Product implements CartLineItemInterface {
    */
   public function setName($name) {
     $this->name = $name;
+
     return $this;
   }
 
@@ -76,6 +81,7 @@ class Product implements CartLineItemInterface {
    */
   public function setReference($reference) {
     $this->reference = $reference;
+
     return $this;
   }
 

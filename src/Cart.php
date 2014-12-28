@@ -7,7 +7,7 @@ class Cart implements CartInterface {
   protected $lineCarts;
 
   public function __construct() {
-    $this->lineCarts = array();
+    $this->lineCarts = [];
   }
 
   public function countItems() {
@@ -21,13 +21,14 @@ class Cart implements CartInterface {
 
     $flag = true;
     foreach ($this->lineCarts as $lineCart) {
-      if ($newLineCart->getItemReference() == $lineCart->getItemReference() ) {
+      if ($newLineCart->getItemReference() == $lineCart->getItemReference()) {
         $lineCart->increaseAmount($newLineCart->getQuantity());
         $flag = false;
       }
     }
     //@Todo remove flag
-    if ($flag) $this->lineCarts[] = $newLineCart;
+    if ($flag)
+      $this->lineCarts[] = $newLineCart;
   }
 
   /*
@@ -39,7 +40,7 @@ class Cart implements CartInterface {
 
   public function removeItem($itemReference) {
     foreach ($this->lineCarts as $key => $lineCart) {
-      if ($itemReference ==  $lineCart->getItemReference() ) {
+      if ($itemReference == $lineCart->getItemReference()) {
         unset($this->lineCarts[$key]);
       }
     }
@@ -50,6 +51,7 @@ class Cart implements CartInterface {
     foreach ($this->lineCarts as $lineCart) {
       $result += $lineCart->lineCartAmount();
     }
+
     return $result;
   }
 
@@ -60,6 +62,7 @@ class Cart implements CartInterface {
   public function getCartItem($index) {
     if (isset($this->lineCarts[$index]))
       return $this->lineCarts[$index];
+
     //@todo don´t return null
     return null;
   }

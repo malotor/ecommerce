@@ -6,10 +6,12 @@ namespace malotor\ecommerce;
 interface CartInterface {
 
   public function countItems();
+
   /*
    * @Todo change function name to addCartItem
    */
   public function addItem(CartLineInterface $newLineCart);
+
   /*
    * @Todo change function name to removeCartItem
    */

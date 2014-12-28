@@ -13,10 +13,10 @@ class CartIterator implements \Iterator {
   }
 
   public function current() {
-    if ($this->cart->countItems () == 0)
+    if ($this->cart->countItems() == 0)
       return null;
 
-    return $this->cart->getCartItem ($this->position);
+    return $this->cart->getCartItem($this->position);
   }
 
   public function next() {
@@ -32,6 +32,6 @@ class CartIterator implements \Iterator {
   }
 
   public function valid() {
-    return !is_null( $this->cart->getCartItem ($this->position));
+    return !is_null($this->cart->getCartItem($this->position));
   }
 } 

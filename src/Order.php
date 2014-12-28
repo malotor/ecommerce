@@ -8,7 +8,7 @@ class Order {
   protected $creationDate;
 
   public function __construct() {
-    $this->items = array();
+    $this->items = [];
     $this->creationDate = time();
   }
 
@@ -26,6 +26,7 @@ class Order {
     foreach ($this->items as $item) {
       $result += $item->lineCartAmount();
     }
+
     return $result;
   }
 
