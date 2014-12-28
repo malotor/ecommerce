@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: manel
- * Date: 21/12/14
- * Time: 21:02
- */
 
 namespace malotor\ecommerce;
-
 
 class EcommerceManager  {
 

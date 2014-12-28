@@ -10,12 +10,6 @@ class Cart implements CartInterface {
     $this->lineCarts = array();
   }
 
-  /**
-   * @deprecated Replace by countItems()
-   */
-  public function countProducts() {
-    return $this->countItems();
-  }
   public function countItems() {
     return count($this->lineCarts);
   }
@@ -27,7 +21,7 @@ class Cart implements CartInterface {
 
     $flag = true;
     foreach ($this->lineCarts as $lineCart) {
-      if ($newLineCart->getProductReference() == $lineCart->getProductReference() ) {
+      if ($newLineCart->getItemReference() == $lineCart->getItemReference() ) {
         $lineCart->increaseAmount($newLineCart->getQuantity());
         $flag = false;
       }
@@ -45,7 +39,7 @@ class Cart implements CartInterface {
 
   public function removeItem($itemReference) {
     foreach ($this->lineCarts as $key => $lineCart) {
-      if ($itemReference ==  $lineCart->getProductReference() ) {
+      if ($itemReference ==  $lineCart->getItemReference() ) {
         unset($this->lineCarts[$key]);
       }
     }
@@ -70,6 +64,10 @@ class Cart implements CartInterface {
   }
 
   public function getIterator() {
+    /**
+     * @todo Replace with
+     * return new \ArrayIterator($this->lineCarts);
+     */
     return new CartIterator($this);
   }
 }

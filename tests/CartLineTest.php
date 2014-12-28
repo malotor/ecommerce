@@ -36,7 +36,7 @@ class CartLineTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testGetProductReference() {
-    $this->assertEquals("PR1" , $this->myCartItem->getProductReference());
+    $this->assertEquals("PR1" , $this->myCartItem->getItemReference());
   }
   public function testGetTotalItemAmount() {
     $this->assertEquals(20.3 , $this->myCartItem->lineCartAmount());

@@ -26,19 +26,6 @@ class CartLine implements CartLineInterface {
     $this->quantity = $quantity;
   }
 
-  /**
-   * @deprecated Replace by getQuantity
-   */
-  public function getAmount() {
-    return $this->getQuantity();
-  }
-  /**
-   * @deprecated Replace by getItem
-   */
-  public function getProduct() {
-    return $this->getItem();
-  }
-
   public function getItem() {
     return $this->item;
   }
@@ -50,7 +37,12 @@ class CartLine implements CartLineInterface {
   /*
    * @todo here we depende from object Product, instead we must depend from a interface.
    */
+
   public function getProductReference() {
+    return $this->getItemReference();
+  }
+
+  public function getItemReference() {
     return $this->getItem()->getReference();
   }
 

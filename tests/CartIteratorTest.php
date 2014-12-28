@@ -17,7 +17,7 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
     $cartLine[0] = $this->getMockBuilder('malotor\ecommerce\CartLine')
       ->disableOriginalConstructor()
       ->getMock();
-    $cartLine[0]->method('getProductReference')
+    $cartLine[0]->method('getItemReference')
       ->willReturn('PR1');
     $cartLine[0]->method('lineCartAmount')
       ->willReturn(20.3);
@@ -25,7 +25,7 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
     $cartLine[1] = $this->getMockBuilder('malotor\ecommerce\CartLine')
       ->disableOriginalConstructor()
       ->getMock();
-    $cartLine[1]->method('getProductReference')
+    $cartLine[1]->method('getItemReference')
       ->willReturn('PR2');
     $cartLine[1]->method('lineCartAmount')
       ->willReturn(10.3);
@@ -68,14 +68,14 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
   public function testGetCurrent() {
 
     $cartLine = $this->cartIterator->current();
-    $this->assertEquals("PR1", $cartLine->getProductReference());
+    $this->assertEquals("PR1", $cartLine->getItemReference());
 
   }
   public function testNextElement() {
     $cartLine = $this->cartIterator->current();
     $this->cartIterator->next();
     $cartLine = $this->cartIterator->current();
-    $this->assertEquals("PR2", $cartLine->getProductReference());
+    $this->assertEquals("PR2", $cartLine->getItemReference());
   }
 
 
@@ -108,7 +108,7 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
     foreach($this->cartIterator as $key => $cartLine) {
       var_dump($key);
       var_dump($cartLine->getProductReference());
-      $this->assertEquals($keys[$key], $cartLine->getProductReference());
+      $this->assertEquals($keys[$key], $cartLine->getItemReference());
     }
 
 

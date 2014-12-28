@@ -5,7 +5,7 @@ namespace malotor\ecommerce;
 
 interface CartLineInterface {
 
-  function getProductReference();
+  function getItemReference();
   function getQuantity();
   function lineCartAmount();
 }
