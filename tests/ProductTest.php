@@ -1,28 +1,13 @@
 <?php
 
-
 use malotor\ecommerce\Product;
 
-/**
- * @ingroup EcommerceProduct
- * @group EcommerceProduct
- */
 class ProductTest extends PHPUnit_Framework_TestCase {
-  /**
-   * {@inheritdoc}
-   */
-  public static function getInfo() {
-    return array(
-      'name' => 'Ecommerce Unit Test',
-      'description' => 'Ecommerce Unit Test',
-      'group' => 'Ecommerce',
-    );
-  }
+
 
   public function setUp() {
 
     $this->myProduct = new Product();
-    //$this->myProduct = Product::createInstance();
 
     $this->productName = "Mi producto";
     $this->productDesc = "Mi descripción";
@@ -33,25 +18,29 @@ class ProductTest extends PHPUnit_Framework_TestCase {
     $this->myProduct->setName($this->productName)
       ->setDescription($this->productDesc)
       ->setReference($this->productRef)
-      ->setPrice($this->productPrice);
-      //->setImage($this->productImage);
+      ->setPrice($this->productPrice)
+      ->setImage($this->productImage);
 
   }
 
-  //Product have fields name, description , ref , price, image
-  public function testProduct()
+  public function testProductGetters()
   {
-
     $this->assertEquals($this->productName , $this->myProduct->getName());
     $this->assertEquals($this->productDesc, $this->myProduct->getDescription());
     $this->assertEquals($this->productRef , $this->myProduct->getReference());
     $this->assertEquals($this->productPrice , $this->myProduct->getPrice());
-    //$this->assertEquals($this->productImage , $this->myProduct->getImage());
-
+    $this->assertEquals($this->productImage , $this->myProduct->getImage());
   }
 
   public function testProductsImplementsCartItemInterface() {
     $this->assertInstanceOf('malotor\ecommerce\CartLineItemInterface', $this->myProduct);
+  }
+
+  /**
+   * @expectedException malotor\ecommerce\ProductPriceException
+   */
+  public function testPriceMustBeNumeric() {
+    $this->myProduct->setPrice("one");
   }
 
 }
