@@ -48,6 +48,9 @@ class Cart implements CartInterface {
     return $result;
   }
 
+  /**
+   * @todo remove unused method
+   */
   public function getCartLines() {
     return $this->lineCarts;
   }
