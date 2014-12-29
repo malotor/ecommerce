@@ -17,7 +17,7 @@ class Order {
   }
 
 
-  public function addItem($newItem) {
+  public function addCartLine($newItem) {
     $this->items[] = $newItem;
   }
 

@@ -62,7 +62,7 @@ class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
       ->with($this->equalTo($productID));
 
     $this->cartMockup->expects($this->once())
-      ->method('addItem');
+      ->method('addCartLine');
 
 
     $this->ecommerceManager->addProductToCart($productID, 1);
@@ -81,7 +81,7 @@ class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
 
   }
 
-  public function testAddItemToCart() {
+  public function testaddCartLineToCart() {
 
     $productID = 1;
 

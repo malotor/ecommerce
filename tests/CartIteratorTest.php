@@ -41,7 +41,7 @@ class CartIteratorTest extends PHPUnit_Framework_TestCase {
     $this->cart->method('getCartItem')
       ->will($this->returnValueMap($map));
 
-    $this->cart->method('countItems')
+    $this->cart->method('countCartLines')
       ->willReturn(2);
 
     $this->cartIterator = new CartIterator($this->cart);

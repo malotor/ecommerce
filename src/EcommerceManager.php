@@ -15,7 +15,7 @@ class EcommerceManager {
   public function addProductToCart($productId, $quantity) {
     $product = $this->productDAO->get($productId);
     $shoppingCart = $this->cartDAO->get();
-    $shoppingCart->addItem(CartLine::create($product, $quantity));
+    $shoppingCart->addCartLine(CartLine::create($product, $quantity));
     $this->cartDAO->save($shoppingCart);
   }
 

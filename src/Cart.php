@@ -10,14 +10,14 @@ class Cart implements CartInterface {
     $this->lineCarts = [];
   }
 
-  public function countItems() {
+  public function countCartLines() {
     return count($this->lineCarts);
   }
 
   /*
    * @Todo change function name to addCartItem
    */
-  public function addItem(CartLineInterface $newLineCart) {
+  public function addCartLine(CartLineInterface $newLineCart) {
 
     $flag = true;
     foreach ($this->lineCarts as $lineCart) {
@@ -31,14 +31,7 @@ class Cart implements CartInterface {
       $this->lineCarts[] = $newLineCart;
   }
 
-  /*
-  * @Deprecated
-  */
-  public function removeProduct($productReference) {
-    $this->removeItem($productReference);
-  }
-
-  public function removeItem($itemReference) {
+  public function removeCartLine($itemReference) {
     foreach ($this->lineCarts as $key => $lineCart) {
       if ($itemReference == $lineCart->getItemReference()) {
         unset($this->lineCarts[$key]);

@@ -30,26 +30,26 @@ class OrderTest extends PHPUnit_Framework_TestCase {
   }
 
 
-  public function testaddItemToOrder() {
+  public function testaddCartLineToOrder() {
 
     $this->assertEquals(0, $this->order->countItems());
 
-    $this->order->addItem(CartLine::create($this->product1));
+    $this->order->addCartLine(CartLine::create($this->product1));
 
     $this->assertEquals(1, $this->order->countItems());
 
-    $this->order->addItem(CartLine::create($this->product2));
+    $this->order->addCartLine(CartLine::create($this->product2));
 
-    $this->assertEquals(2, $this->order->countItems());
+    $this->assertEquals(2, $this->order->countCartLines());
 
   }
 
 
   public function testAddMoreThenOneItemFromAProduct() {
 
-    $this->order->addItem(CartLine::create($this->product1, 2));
+    $this->order->addCartLine(CartLine::create($this->product1, 2));
 
-    $this->assertEquals(1, $this->order->countItems());
+    $this->assertEquals(1, $this->order->countCartLines());
 
   }
 
@@ -57,11 +57,11 @@ class OrderTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals(0, $this->order->totalAmount());
 
-    $this->order->addItem(CartLine::create($this->product1));
+    $this->order->addCartLine(CartLine::create($this->product1));
 
     $this->assertEquals(20.3, $this->order->totalAmount());
 
-    $this->order->addItem(CartLine::create($this->product2));
+    $this->order->addCartLine(CartLine::create($this->product2));
 
     $this->assertEquals(31.3, $this->order->totalAmount());
 

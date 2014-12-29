@@ -13,7 +13,7 @@ class CartIterator implements \Iterator {
   }
 
   public function current() {
-    if ($this->cart->countItems() == 0)
+    if ($this->cart->countCartLines() == 0)
       return null;
 
     return $this->cart->getCartItem($this->position);
