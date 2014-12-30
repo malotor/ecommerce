@@ -57,7 +57,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
     $this->myCart->addCartLine(CartLine::create($this->product1));
 
-    $this->myCart->removeProduct('PR1');
+    $this->myCart->removeCartLine('PR1');
 
     $this->assertEquals(0, $this->myCart->countCartLines());
 

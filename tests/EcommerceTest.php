@@ -1,23 +1,10 @@
 <?php
 
-use malotor\ecommerce\CartDAO;
-use malotor\ecommerce\EcommerceManager;
-use malotor\ecommerce\ProductDAO;
+use malotor\ecommerce\Ecommerce;
 
-class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
+class EcommerceTest extends PHPUnit_Framework_TestCase {
 
   protected $ecommerceManager;
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function getInfo() {
-    return [
-      'name'        => 'Ecommerce Unit Test',
-      'description' => 'Ecommerce Unit Test',
-      'group'       => 'Ecommerce',
-    ];
-  }
 
   public function setUp() {
     $this->productMockup = $this->getMockBuilder('malotor\ecommerce\CartLineItemInterface')
@@ -44,13 +31,13 @@ class EcommerceManagerTest extends PHPUnit_Framework_TestCase {
       ->willReturn($this->cartMockup);
 
 
-    $this->ecommerceManager = new EcommerceManager($this->productDAOMockup, $this->cartDAOMockup);
+    $this->ecommerceManager = new Ecommerce($this->productDAOMockup, $this->cartDAOMockup);
 
   }
 
   public function testCreateNewEcommerceManager() {
 
-    $this->assertInstanceOf('malotor\ecommerce\EcommerceManager', $this->ecommerceManager);
+    $this->assertInstanceOf('malotor\ecommerce\Ecommerce', $this->ecommerceManager);
   }
 
   public function testAddProductToCart() {

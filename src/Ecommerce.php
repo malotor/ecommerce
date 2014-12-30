@@ -2,7 +2,7 @@
 
 namespace malotor\ecommerce;
 
-class EcommerceManager {
+class Ecommerce {
 
   protected $productDAO;
   protected $cartDAO;

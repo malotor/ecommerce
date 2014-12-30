@@ -40,7 +40,7 @@ class OrderTest extends PHPUnit_Framework_TestCase {
 
     $this->order->addCartLine(CartLine::create($this->product2));
 
-    $this->assertEquals(2, $this->order->countCartLines());
+    $this->assertEquals(2, $this->order->countItems());
 
   }
 
@@ -49,7 +49,7 @@ class OrderTest extends PHPUnit_Framework_TestCase {
 
     $this->order->addCartLine(CartLine::create($this->product1, 2));
 
-    $this->assertEquals(1, $this->order->countCartLines());
+    $this->assertEquals(1, $this->order->countItems());
 
   }
 
