@@ -2,20 +2,6 @@
 
 namespace malotor\ecommerce;
 
-
-/*
- * @Todo Extend from LineItem and this class must convert into ProductLinecar
- *
- * In LineItem abstract Class must be
- *
- * getReference()
- *
- *  cart -> cartLine -> cartLineItem
- *
- * cartLine must implement getReference();
- *
- * @Todo The diferenc between the number of items and de total price is nos clear
- */
 class CartLine implements CartLineInterface {
 
   protected $amount;
@@ -35,13 +21,16 @@ class CartLine implements CartLineInterface {
   }
 
   /*
-   * @todo here we depende from object Product, instead we must depend from a interface.
+   * @todo Remove
    */
 
   public function getProductReference() {
     return $this->getItemReference();
   }
 
+  /*
+   * @todo check Demeter law
+   */
   public function getItemReference() {
     return $this->getItem()->getReference();
   }
