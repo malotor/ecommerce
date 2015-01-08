@@ -7,13 +7,13 @@ class Ecommerce {
   protected $productDAO;
   protected $cartDAO;
 
-  public function __construct(ProductDAOInterface $productDAO, CartDAOInterface $cartDAO) {
-    $this->productDAO = $productDAO;
+  public function __construct(Adapters\ProductRepositoryInterface $productRepository, Adapters\CartRepositoryInterface $cartDAO) {
+    $this->productRepository = $productRepository;
     $this->cartDAO = $cartDAO;
   }
 
   public function addProductToCart($productId, $quantity) {
-    $product = $this->productDAO->get($productId);
+    $product = $this->productRepository->get($productId);
     $shoppingCart = $this->cartDAO->get();
     $shoppingCart->addCartLine(CartLine::create($product, $quantity));
     $this->cartDAO->save($shoppingCart);

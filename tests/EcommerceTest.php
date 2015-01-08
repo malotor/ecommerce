@@ -17,21 +17,21 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
 
     //ProductDAO MockUP
 
-    $this->productDAOMockup = $this->getMockBuilder('malotor\ecommerce\ProductDAOInterface')
+    $this->productRepositoryMockup = $this->getMockBuilder('malotor\ecommerce\Adapters\ProductRepositoryInterface')
       ->getMock();
-    $this->productDAOMockup->method('get')
+    $this->productRepositoryMockup->method('get')
       ->willReturn($this->productMockup);
-    $this->productDAOMockup->method('save')
+    $this->productRepositoryMockup->method('save')
       ->willReturn($this->productMockup);
 
     $this->cartMockup = $this->getMock('malotor\ecommerce\Cart');
 
-    $this->cartDAOMockup = $this->getMock('malotor\ecommerce\CartDAOInterface');
-    $this->cartDAOMockup->method('get')
+    $this->cartRepositoryMockup = $this->getMock('malotor\ecommerce\Adapters\CartRepositoryInterface');
+    $this->cartRepositoryMockup->method('get')
       ->willReturn($this->cartMockup);
 
 
-    $this->ecommerceManager = new Ecommerce($this->productDAOMockup, $this->cartDAOMockup);
+    $this->ecommerceManager = new Ecommerce($this->productRepositoryMockup, $this->cartRepositoryMockup);
 
   }
 
@@ -44,7 +44,7 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
 
     $productID = 1;
 
-    $this->productDAOMockup->expects($this->once())
+    $this->productRepositoryMockup->expects($this->once())
       ->method('get')
       ->with($this->equalTo($productID));
 
@@ -60,7 +60,7 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
 
     $productID = 1;
 
-    $this->productDAOMockup->expects($this->once())
+    $this->productRepositoryMockup->expects($this->once())
       ->method('get')
       ->with($this->equalTo($productID));
 
@@ -72,7 +72,7 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
 
     $productID = 1;
 
-    $this->productDAOMockup->expects($this->once())
+    $this->productRepositoryMockup->expects($this->once())
       ->method('get')
       ->with($this->equalTo($productID));
 
