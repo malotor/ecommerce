@@ -4,8 +4,8 @@ This is an example of how to create a domain model from an user histories.
 
 For using this logical business with your frame you must implement this 2 port/interface.
 
-	/src/ProductDAOInterface
-	/src/CartDAOInterface
+	/src/ProductRepositoryInterface
+	/src/CartRepositoryInterface
 
 And inject it to the EcommerceManager
 
