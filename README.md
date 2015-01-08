@@ -9,7 +9,7 @@ For using this logical business with your frame you must implement this 2 port/i
 
 And inject it to the EcommerceManager
 
-	$ecommerManager = new EcommerceManager($productDAO, $cartDAO)
+	$ecommerManager = new Ecommerce($productRepository, $cartRepository)
 	
 
 User histories
