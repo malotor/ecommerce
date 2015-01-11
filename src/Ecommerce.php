@@ -27,6 +27,6 @@ class Ecommerce {
   }
 
   public function getCart() {
-    return $this->cartDAO->get();
+    return $this->cartRepository->get();
   }
 }
