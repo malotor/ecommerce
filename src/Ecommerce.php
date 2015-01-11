@@ -19,9 +19,10 @@ class Ecommerce {
     $this->cartRepository->save($shoppingCart);
   }
 
-  public function removeProductFromCart($productRef) {
+  public function removeProductFromCart($productId) {
+    $product = $this->productRepository->get($productId);
     $shoppingCart = $this->cartRepository->get();
-    $shoppingCart->removeCartLine($productRef);
+    $shoppingCart->removeCartLine($product->getReference());
     $this->cartRepository->save($shoppingCart);
   }
 
