@@ -4,3 +4,5 @@ composer.lock
 .idea
 src/html
 src/latex
+src/SomeClass.php
+tests/StubTest.php

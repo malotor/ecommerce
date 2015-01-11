@@ -40,6 +40,7 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
     $this->assertInstanceOf('malotor\ecommerce\Ecommerce', $this->ecommerceManager);
   }
 
+
   public function testAddProductToCart() {
 
     $productID = 1;
@@ -56,6 +57,7 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
 
   }
 
+  /*
   public function testGetTheProductFromDAO() {
 
     $productID = 1;
@@ -79,5 +81,6 @@ class EcommerceTest extends PHPUnit_Framework_TestCase {
     $this->ecommerceManager->addProductToCart($productID, 1);
 
   }
+  */
 
 }
